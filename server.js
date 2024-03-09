@@ -5,6 +5,11 @@ const fs = require('fs');
 const app = express();
 const port = 3000;
 
+var datetime = new Date();
+var options = { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
+var formattedDate = datetime.toLocaleString('en-GB', options);
+console.log(formattedDate);
+
 app.use(bodyParser.json());
 
 // Endpoint to handle incoming messages
@@ -25,5 +30,5 @@ app.post('/send-message', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(formattedDate + ` Patient.js file is running on port ${port}`);
 });
