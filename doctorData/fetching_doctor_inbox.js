@@ -21,5 +21,5 @@ app.get("/inbox", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(formattedDate + ` Server is running on port ${PORT}`);
+  console.log(formattedDate + `fetch data from message.txt server is running on port ${PORT}`);
 });

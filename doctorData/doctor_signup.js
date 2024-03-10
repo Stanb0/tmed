@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
   host: "localhost", // Change this if your MySQL server is hosted on a different machine
   user: "tmuser",
   password: "USDT_btc",
-  database: "demo",
+  database: "demo1",
 });
 
 // Connect to MySQL
@@ -30,7 +30,7 @@ app.post("/signup", (req, res) => {
 
   // Insert new user into the database
   connection.query(
-    "INSERT INTO signUp (username, email, password) VALUES (?, ?, ?)",
+    "INSERT INTO doctorUser (username, email, password) VALUES (?, ?, ?)",
     [username, email, password],
     (err, results) => {
       if (err) {
@@ -46,5 +46,5 @@ app.post("/signup", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`DoctorsignUp Server is running on port ${PORT}`);
 });
