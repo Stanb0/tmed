@@ -3,7 +3,13 @@ const express = require('express');
 const app = express();
 
 const PORT = 2200;
-app.use(express.json());
+
+const datetime = new Date();
+const  options = { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
+const  formattedDate = datetime.toLocaleString('en-GB', options);
+
+
+app.use(express.json()); //without this it was not working idk why, i added and it's working
 
 app.post('/doctor/login', (req, res) => {
   const { userName, password } = req.body;
@@ -28,5 +34,5 @@ app.post('/doctor/login', (req, res) => {
 //module.exports = router;
 
 app.listen(PORT, () => {
-  console.log(`Doctor Login Server is running on port ${PORT}`);
+  console.log(formattedDate + ` Doctor Login Server is running on port ${PORT}`);
 });

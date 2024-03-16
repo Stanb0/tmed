@@ -4,6 +4,10 @@ const connection = require('../database/database_connection');
 
 const PORT = 1100;
 
+const datetime = new Date();
+const  options = { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
+const  formattedDate = datetime.toLocaleString('en-GB', options);
+
 app.use(express.json());
 
 app.post('/patient/login', (req, res) => {
@@ -29,5 +33,5 @@ app.post('/patient/login', (req, res) => {
 //module.exports = router;
 
 app.listen(PORT, () => {
-  console.log(`Patient Login Server is running on port ${PORT}`);
+  console.log(formattedDate + ` Patient Login Server is running on port ${PORT}`);
 });

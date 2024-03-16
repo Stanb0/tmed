@@ -3,31 +3,30 @@ const mysql = require("mysql2");
 const connection = require('../database/database_connection');
 
 const app = express();
-const PORT = 5000;
+const PORT = 5500;
 
 const datetime = new Date();
 const  options = { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
 const  formattedDate = datetime.toLocaleString('en-GB', options);
 
-
 // Middleware to parse JSON
 app.use(express.json());
 
 // Route for handling user sign-up
-app.post("/doctorSignup", (req, res) => {
+app.post("/patientSignup", (req, res) => {
   const { username, email, password } = req.body;
 
   // Insert new user into the database
   connection.query(
-    "INSERT INTO doctorUser (username, email, password) VALUES (?, ?, ?)",
+    "INSERT INTO patientUser (username, email, password) VALUES (?, ?, ?)",
     [username, email, password],
     (err, results) => {
       if (err) {
-        console.error("Error signing up user: ", err);
+        console.error(formattedDate + " Error signing up user: ", err);
         res.status(500).json({ error: "Internal Server Error" });
         return;
       }
-      console.log("User signed up successfully");
+      console.log(formattedDate + " User signed up successfully");
       res.status(200).json({ message: "User signed up successfully" });
     }
   );
