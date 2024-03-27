@@ -33,7 +33,8 @@ app.get('/doctor/keygen', (req, res) => {
     privateKeyEncoding: {
       type: 'pkcs8',
       format: 'pem'
-    }
+    },
+    padding: crypto.constants.RSA_PKCS1_OAEP_PADDING
   }, (err, publicKey, privateKey) => {
     if (err) {
       console.error('Error generating RSA keys:', err);

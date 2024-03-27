@@ -24,7 +24,7 @@ app.post('/doctor/login', (req, res) => {
 
     if (results.length > 0) {
       res.status(200).json({ message: 'Login successful', user: results[0] });
-	console.log("Doctor successfully logged in");
+	console.log(userName, " Successfully logged in");
     } else {
       res.status(401).json({ message: 'Invalid credentials' });
     }

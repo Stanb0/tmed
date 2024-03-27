@@ -1,14 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2");
 const connection = require('../database/database_connection');
-
 const app = express();
 const PORT = 5000;
 
 const datetime = new Date();
 const  options = { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
 const  formattedDate = datetime.toLocaleString('en-GB', options);
-
 
 // Middleware to parse JSON
 app.use(express.json());
